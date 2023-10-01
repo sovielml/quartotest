@@ -16,8 +16,15 @@ Markdown is an easy to read and write text format:
 Here is a Python code cell:
 
 ```{python}
-import os
-os.cpu_count()
+from gradio_client import Client
+
+client = Client("https://fffiloni-image-to-story.hf.space/")
+result = client.predict(
+				"https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png",	# str (filepath or URL to image) in 'Image input' Image component
+				"Children",	# str in 'Target Audience' Radio component
+				fn_index=1
+)
+print(result)
 ```
 
 ## Equation
